@@ -16,6 +16,7 @@ namespace Builder_Deno
                                                  .MitTüren(5)
                                                  .MitBöden(2)
                                                  .MitBöden(5)
+                                                 .MitOberfläche(Oberflächenart.Gewachst)
                                                  .Konstruieren();
 
 

@@ -36,6 +36,9 @@ namespace Builder_Deno
             }
             public SchrankBauer InFarbe(string gewünschteFarbe)
             {
+                if (zuBauenderSchrank.Oberfläche != Oberflächenart.Lackiert)
+                    throw new InvalidOperationException("Nur lackierte Schränke dürfen eine Farbe haben");
+
                 zuBauenderSchrank.Farbe = gewünschteFarbe;
                 return this;
             }
@@ -51,25 +54,23 @@ namespace Builder_Deno
             }
             public SchrankBauer MitBöden(int anzahlBöden)
             {
+                if (anzahlBöden < 0 || anzahlBöden > 6)
+                    throw new InvalidOperationException("Ungültige Anzahl der Böden");
+
                 zuBauenderSchrank.AnzahlBöden = anzahlBöden;
                 return this;
             }
             public SchrankBauer MitTüren(int anzahlTüren)
             {
+                if (anzahlTüren < 2 || anzahlTüren > 7)
+                    throw new ArgumentException("Ungültige Anzahl der Türen");
+
                 zuBauenderSchrank.AnzahlTüren = anzahlTüren;
                 return this;
             }
 
             public Schrank Konstruieren()
             {
-                // Variante 1) Validierung
-                if (zuBauenderSchrank.AnzahlTüren < 2 || zuBauenderSchrank.AnzahlTüren > 7)
-                    throw new InvalidOperationException("Ungültige Anzahl der Türen");
-                if (zuBauenderSchrank.AnzahlBöden < 0 || zuBauenderSchrank.AnzahlBöden > 6)
-                    throw new InvalidOperationException("Ungültige Anzahl der Böden");
-                if (zuBauenderSchrank.Farbe != string.Empty && zuBauenderSchrank.Oberfläche != Oberflächenart.Lackiert)
-                    throw new InvalidOperationException("Nur lackierte Schränke dürfen eine Farbe haben");
-
                 return zuBauenderSchrank;
             }
 
