@@ -10,6 +10,12 @@ namespace Dekorator_Demo
     {
         static void Main(string[] args)
         {
+
+            var meinePizza = new Käse(new Käse(new Schinken(new Pizza())));
+
+            Console.WriteLine(meinePizza.Text);
+            Console.WriteLine(meinePizza.Preis);
+
             Console.WriteLine("---ENDE---");
             Console.ReadKey();
         }
