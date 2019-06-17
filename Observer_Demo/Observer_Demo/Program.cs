@@ -10,7 +10,11 @@ namespace Observer_Demo
     {
         static void Main(string[] args)
         {
+            Thermostat t = new Thermostat();
+            Jalousie j = new Jalousie();
 
+            // Situation: Jalousie wird heruntergefahren wenn es zu Heiß ist:
+            t.ZuHeiß += j.Herunterlassen;
 
             Console.WriteLine("---ENDE---");
             Console.ReadKey();
