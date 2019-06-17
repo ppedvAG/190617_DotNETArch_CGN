@@ -8,12 +8,22 @@ namespace Singleton_Demo
 {
     class Program
     {
+        //static Program()
+        //{
+        //    logger = new Logger();
+        //    logger = new Logger();
+        //    logger = new Logger();
+        //    logger = new Logger();
+        //    logger = new Logger();
+        //}
+        //private static readonly Logger logger;
+
         static void Main(string[] args)
         {
-            new Logger().Log("Hallo Welt");
-            new Logger().Log("Das ist ein Test");
-            new Logger().Log("Demo ...");
-
+            Parallel.For(0, 100000, i =>
+              {
+                  Logger.Instance.Log($"Hallo Welt {i}");
+              });
 
 
             Console.WriteLine("---ENDE---");
