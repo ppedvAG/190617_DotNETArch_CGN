@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Amazon.cs" />
     <Compile Include="DHLExpress.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="LagerSystem.cs" />
