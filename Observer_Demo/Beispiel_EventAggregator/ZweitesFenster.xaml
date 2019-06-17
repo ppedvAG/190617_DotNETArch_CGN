@@ -1,0 +1,12 @@
+﻿<Window x:Class="Beispiel_EventAggregator.ZweitesFenster"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Beispiel_EventAggregator"
+        mc:Ignorable="d"
+        Title="ZweitesFenster" Height="234.806" Width="564.664">
+    <Grid>
+        <Slider x:Name="sliderWert" Minimum="0" Maximum="100" VerticalAlignment="Center" ValueChanged="SliderWert_ValueChanged"/>
+    </Grid>
+</Window>

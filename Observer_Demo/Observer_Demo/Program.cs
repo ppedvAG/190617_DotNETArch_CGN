@@ -14,7 +14,11 @@ namespace Observer_Demo
             Jalousie j = new Jalousie();
 
             // Situation: Jalousie wird heruntergefahren wenn es zu Heiß ist:
-            t.ZuHeiß += j.Herunterlassen;
+            // t.ZuHeiß += j.Herunterlassen;
+
+            EventAggregator.Subscribe(j, "zuHeiß", j.Herunterlassen); // Auslöser ist egal
+
+
 
             Console.WriteLine("---ENDE---");
             Console.ReadKey();

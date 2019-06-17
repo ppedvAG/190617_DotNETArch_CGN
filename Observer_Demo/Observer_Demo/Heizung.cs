@@ -26,7 +26,7 @@ namespace Observer_Demo
         public Thermostat()
         {
             Gebäudeheizung = new Heizung();
-            Gebäudeheizung.Temperatur = 20;
+            Gebäudeheizung.Temperatur = 30;
 
             timer = new Timer();
             timer.Interval = 1000;
@@ -40,7 +40,8 @@ namespace Observer_Demo
             if (Gebäudeheizung.Temperatur > 36)
             {
                 Console.WriteLine("UFFFFFF");
-                ZuHeiß?.Invoke();
+                // ZuHeiß?.Invoke();
+                EventAggregator.Publish("zuHeiß");
             }
             else if (Gebäudeheizung.Temperatur < 15)
             {
@@ -49,6 +50,7 @@ namespace Observer_Demo
             }
             else
                 Console.WriteLine("Temperatur passt ...");
+            Console.WriteLine($"Es wird wärmer: neue Temp: {++Gebäudeheizung.Temperatur}");
         }
 
         public Heizung Gebäudeheizung { get; set; }

@@ -1,0 +1,13 @@
+﻿<Window x:Class="Beispiel_EventAggregator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Beispiel_EventAggregator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="239.046" Width="382.332">
+    <StackPanel VerticalAlignment="Center">
+        <Label x:Name="labelText" Content="Mein Text" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="buttonFenster" Content="ZweitesFenster" Click="ButtonFenster_Click"/>
+    </StackPanel>
+</Window>
