@@ -43,8 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DHLExpress.cs" />
+    <Compile Include="EmailService.cs" />
+    <Compile Include="LagerSystem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RechnungsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
