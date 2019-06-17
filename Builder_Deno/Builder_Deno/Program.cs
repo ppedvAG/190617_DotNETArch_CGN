@@ -10,7 +10,13 @@ namespace Builder_Deno
     {
         static void Main(string[] args)
         {
-
+            Schrank schwedischerSchrank = Schrank.BaueSchrank()
+                                                 .MitOberfläche(Oberflächenart.Lackiert)
+                                                 .InFarbe("Rot")
+                                                 .MitTüren(5)
+                                                 .MitBöden(2)
+                                                 .MitBöden(5)
+                                                 .Konstruieren();
 
 
             Console.WriteLine("---ENDE ❤❤❤❤---");
