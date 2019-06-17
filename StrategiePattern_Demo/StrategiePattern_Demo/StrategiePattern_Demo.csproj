@@ -43,8 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anker.cs" />
+    <Compile Include="Auto.cs" />
+    <Compile Include="BluetoothBoxen.cs" />
+    <Compile Include="Holzklötze.cs" />
+    <Compile Include="IAudioSystem.cs" />
+    <Compile Include="IBremse.cs" />
+    <Compile Include="IMotor.cs" />
+    <Compile Include="JetMotor.cs" />
+    <Compile Include="Kasettenrekorder.cs" />
+    <Compile Include="Keramikbremsen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RasenmäherMotor.cs" />
+    <Compile Include="Rennmotor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

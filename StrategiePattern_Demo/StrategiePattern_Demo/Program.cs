@@ -10,6 +10,14 @@ namespace StrategiePattern_Demo
     {
         static void Main(string[] args)
         {
+            var audi = new Auto(new Holzklötze(), new RasenmäherMotor(), new Kasettenrekorder());
+
+            audi.Beschleunigen();
+            audi.Beschleunigen();
+
+            audi.Bremsen();
+
+            Console.WriteLine(audi.Geschwindigkeit);
 
 
             Console.WriteLine("---ENDE---");
