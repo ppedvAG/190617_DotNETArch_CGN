@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonenVerwaltung"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Variante mit MVVMLight" Height="450" Width="800"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="GetPersonen" Command="{Binding GetPersonen_Command}"/>
+        </Menu>
+        <ListBox ItemsSource="{Binding Personenliste}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Vorname}"/>
+                        <TextBlock Text="{Binding Nachname}"/>
+                        <TextBlock Text="{Binding Alter}"/>
+                        <TextBlock Text="{Binding Kontostand}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
 </Window>
