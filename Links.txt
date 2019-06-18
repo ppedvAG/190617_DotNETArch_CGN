@@ -19,3 +19,6 @@ https://github.com/Moq/moq4/wiki/Quickstart
 
 XUnit Run by Trait
 https://xunit.net/docs/running-tests-in-msbuild
+
+XUnit - Vergleich der Schlüsselwörter/Attribute etc...
+https://xunit.net/docs/comparisons
