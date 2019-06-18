@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BV.Domain", "ppedv.BV.Domain\ppedv.BV.Domain.csproj", "{3324F636-D477-4EEF-9C22-39FF4EC72470}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.BV.Domain", "ppedv.BV.Domain\ppedv.BV.Domain.csproj", "{3324F636-D477-4EEF-9C22-39FF4EC72470}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BV.Data.EF", "ppedv.BV.Data.EF\ppedv.BV.Data.EF.csproj", "{A1CBB4A6-F985-4D3B-BFA0-07BE47DC4A01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.BV.Data.EF", "ppedv.BV.Data.EF\ppedv.BV.Data.EF.csproj", "{A1CBB4A6-F985-4D3B-BFA0-07BE47DC4A01}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BV.Data.EF.Tests", "ppedv.BV.Data.EF.Tests\ppedv.BV.Data.EF.Tests.csproj", "{27E05A0F-EC91-4FAD-A398-174319860E99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BV.Logic", "ppedv.BV.Logic\ppedv.BV.Logic.csproj", "{400EA0B6-EB1F-4D0F-BCDD-5AABD3383BAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.BV.Logic", "ppedv.BV.Logic\ppedv.BV.Logic.csproj", "{400EA0B6-EB1F-4D0F-BCDD-5AABD3383BAA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BV.Logic.Tests", "ppedv.BV.Logic.Tests\ppedv.BV.Logic.Tests.csproj", "{63EB0C63-002D-4FE1-BA7D-185C63575615}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.BV.UI.Console", "ppedv.BV.UI.Console\ppedv.BV.UI.Console.csproj", "{64FC9DD9-71E8-4303-B8DA-33F2D5DAC870}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{63EB0C63-002D-4FE1-BA7D-185C63575615}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63EB0C63-002D-4FE1-BA7D-185C63575615}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63EB0C63-002D-4FE1-BA7D-185C63575615}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64FC9DD9-71E8-4303-B8DA-33F2D5DAC870}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64FC9DD9-71E8-4303-B8DA-33F2D5DAC870}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64FC9DD9-71E8-4303-B8DA-33F2D5DAC870}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64FC9DD9-71E8-4303-B8DA-33F2D5DAC870}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
