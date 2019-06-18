@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using AutoFixture;
+using FluentAssertions;
 using Moq;
 using ppedv.BV.Data.EF;
 using ppedv.BV.Domain;
@@ -43,6 +44,29 @@ namespace ppedv.BV.Logic.Tests
             var newCount = repository.Query<BookStore>().Count();
 
             newCount.Should().Be(oldCount + 5);
+        }
+
+        [Fact]
+        [Trait("Unittest","")]
+        public void Core_GetBookStoreWithHighestInventoryValue_returns_correct_result()
+        {
+            Fixture fix = new Fixture();
+            var mockData = fix.CreateMany<BookStore>(3);
+            // Ergebnis:
+            mockData.ElementAt(2).InventoryList.ElementAt(0).Book.Price = 999999999999m;
+            mockData.ElementAt(2).InventoryList.ElementAt(0).Amount = Int32.MaxValue;
+
+            var mock = new Mock<IRepository>(); // Fakeimplementierung der Schnittstelle
+            mock.Setup(x => x.Query<BookStore>())
+                .Returns(() => mockData.AsQueryable());
+
+            var core = new Core(mock.Object);
+
+            var result = core.GetBookStoreWithHighestInventoryValue();
+            // Irgendwie prüfen, dass vom Repository 5 mal "Add()" ausgeführt wurde und dass gespeichert wurde
+
+            result.Should().Be(mockData.ElementAt(2));
+            mock.Verify(x => x.Query<BookStore>(), Times.AtLeastOnce());
         }
 
     }
