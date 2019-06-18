@@ -1,5 +1,8 @@
 Nützliche Links:
 
+Aushang Büro :)
+https://pics.me.me/in-case-of-fire-o-1-git-commit-h-2-21457231.png
+
 .NET Standard
 https://devblogs.microsoft.com/dotnet/introducing-net-standard/
 https://docs.microsoft.com/de-de/dotnet/standard/net-standard
