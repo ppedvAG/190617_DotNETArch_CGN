@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoFixture;
 using NUnit.Framework;
+using ppedv.BV.Domain;
 
 namespace ppedv.BV.Data.EF.Tests
 {
     [TestFixture]
     public class EFContextTests
     {
-        private const string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=BV_Tests;Trusted_Connection=true;AttachDbFilename=C:\temp\BV_Test.mdf";
         // AAA - Prinzip
         // Arrange, Act, Assert
 
@@ -21,13 +22,13 @@ namespace ppedv.BV.Data.EF.Tests
         [Test]
         public void EFContext_can_create_context()
         {
-            var context = new EFContext(connectionString);
+            var context = new EFContext(SetupClass.connectionString);
         }
 
         [Test]
         public void EFContext_can_create_database()
         {
-            using (var context = new EFContext(connectionString))
+            using (var context = new EFContext(SetupClass.connectionString))
             {
                 if (context.Database.Exists())
                     context.Database.Delete();
@@ -37,6 +38,26 @@ namespace ppedv.BV.Data.EF.Tests
                 context.Database.Create();
 
                 Assert.IsTrue(context.Database.Exists());
+            }
+        }
+
+        // CRUD -> Create, Read, Update, Delete
+
+        [Test]
+        public void EFContext_can_insert_Book()
+        {
+            var b1 = SetupClass.BookStores[0].InventoryList.ElementAt(0).Book;
+
+            using(var context = new EFContext(SetupClass.connectionString))
+            {
+                context.Book.Add(b1);
+                context.SaveChanges();
+            }
+
+            using (var context = new EFContext(SetupClass.connectionString))
+            {
+                var loadedBook = context.Book.Find(b1.ID);
+                Assert.AreEqual(loadedBook.ISBN, b1.ISBN);
             }
         }
 
