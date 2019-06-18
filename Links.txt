@@ -16,3 +16,6 @@ https://fluentassertions.com/introduction
 
 Moq
 https://github.com/Moq/moq4/wiki/Quickstart
+
+XUnit Run by Trait
+https://xunit.net/docs/running-tests-in-msbuild
