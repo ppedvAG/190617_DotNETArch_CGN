@@ -6,7 +6,7 @@ namespace ppedv.BV.Data.EF
 {
     public class EFContext : DbContext
     {
-        public EFContext() : this(@"Server=(localdb)\MSSQLLocalDB;Database=BV;Trusted_Connection=true") {}
+        public EFContext() : this(@"Server=(localdb)\MSSQLLocalDB;Database=BV;Trusted_Connection=true;AttachDbFilename=C:\temp\BV.mdf") {}
         public EFContext(string connectionString) : base(connectionString){}
 
         public DbSet<Book> Book { get; set; }
