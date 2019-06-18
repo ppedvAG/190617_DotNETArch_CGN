@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ppedv.BV.Data.EF;
+using ppedv.BV.Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,13 @@ namespace ppedv.BV.UI.ASP.Controllers
 {
     public class BookStoreController : Controller
     {
+        private const string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=BV_Produktiv;Trusted_Connection=true;AttachDbFilename=C:\temp\BV.mdf";
+        public BookStoreController()
+        {
+            core = new Core(new EFRepository(new EFContext(connectionString)));
+        }
+        private readonly Core core;
+
         // GET: BookStore
         public ActionResult Index()
         {
