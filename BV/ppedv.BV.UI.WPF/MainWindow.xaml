@@ -4,9 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ppedv.BV.UI.WPF"
+        xmlns:vm="clr-namespace:ppedv.BV.UI.WPF.ViewModels"
+        
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Window.DataContext>
+        <vm:MainViewModel />
+        <!-- Funktioniert nur solange das VM einen parameterlosen Konstruktor hat -->
+    </Window.DataContext>
+    <StackPanel Margin="20">
+        <Button Content="Get BookStore with highest Invenvory-Value"
+                Command="{Binding GetBookStoreWithHighestValue_Command}"/>
+        <TextBlock Text="{Binding BookStoreWithHighestValue.ID}"/>
+        <TextBlock Text="{Binding BookStoreWithHighestValue.Address}"/>
+        <ListBox ItemsSource="{Binding BookStoreWithHighestValue.InventoryList}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Book.Title}"/>
+                        <TextBlock Text="{Binding Book.ID}"/>
+                        <TextBlock Text="{Binding Amount}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
 </Window>

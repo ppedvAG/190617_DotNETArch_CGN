@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ppedv.BV.UI.WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace ppedv.BV.UI.WPF
         public MainWindow()
         {
             InitializeComponent();
+            // Variante mit einem Konstruktor, der z.B. Services entgegennimmt (DependencyInjection)
+            // this.DataContext = new MainViewModel(new MeinService());
         }
     }
 }
