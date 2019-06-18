@@ -13,3 +13,6 @@ https://github.com/AutoFixture/AutoFixture/wiki/Cheat-Sheet
 
 FluentAssertions
 https://fluentassertions.com/introduction
+
+Moq
+https://github.com/Moq/moq4/wiki/Quickstart
