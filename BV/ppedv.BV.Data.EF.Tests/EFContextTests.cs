@@ -10,7 +10,7 @@ namespace ppedv.BV.Data.EF.Tests
     [TestFixture]
     public class EFContextTests
     {
-        private const string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=BV_Tests;Trusted_Connection=true";
+        private const string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=BV_Tests;Trusted_Connection=true;AttachDbFilename=C:\temp\BV_Test.mdf";
         // AAA - Prinzip
         // Arrange, Act, Assert
 
