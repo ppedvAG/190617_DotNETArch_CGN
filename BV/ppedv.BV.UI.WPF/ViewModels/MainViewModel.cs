@@ -7,13 +7,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace ppedv.BV.UI.WPF.ViewModels
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : BaseViewModel
     {
         private const string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=BV_Produktiv;Trusted_Connection=true;AttachDbFilename=C:\temp\BV.mdf";
 
@@ -27,14 +28,16 @@ namespace ppedv.BV.UI.WPF.ViewModels
         private void GetBookStore(object obj)
         {
             BookStoreWithHighestValue = core.GetBookStoreWithHighestInventoryValue();
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BookStoreWithHighestValue"));
         }
 
         private Core core;
-        public event PropertyChangedEventHandler PropertyChanged;
 
-
-        public BookStore BookStoreWithHighestValue { get; set; }
+        private BookStore bookStoreWithHighestValue;
+        public BookStore BookStoreWithHighestValue
+        {
+            get => bookStoreWithHighestValue;
+            set => SetProperty(ref bookStoreWithHighestValue, value);
+        }
         public ICommand GetBookStoreWithHighestValue_Command { get; set; }
     }
 }
