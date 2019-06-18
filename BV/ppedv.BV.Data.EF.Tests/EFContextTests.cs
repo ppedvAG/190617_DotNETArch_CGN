@@ -21,12 +21,14 @@ namespace ppedv.BV.Data.EF.Tests
         // Beispiel: Taschenrechner_Sum_2_and_2_results_4
 
         [Test]
+        [Category("NUnit")]
         public void EFContext_can_create_context()
         {
             var context = new EFContext(SetupClass.connectionString);
         }
 
         [Test]
+        [Category("NUnit")]
         public void EFContext_can_create_database()
         {
             using (var context = new EFContext(SetupClass.connectionString))
@@ -48,6 +50,7 @@ namespace ppedv.BV.Data.EF.Tests
         // CRUD -> Create, Read, Update, Delete
 
         [Test]
+        [Category("NUnit")]
         public void EFContext_can_insert_Book()
         {
             var b1 = SetupClass.BookStores[0].InventoryList.ElementAt(0).Book;
@@ -67,6 +70,7 @@ namespace ppedv.BV.Data.EF.Tests
         }
 
         [Test]
+        [Category("NUnit")]
         public void EFContext_can_update_Book()
         {
             var b1 = SetupClass.BookStores[0].InventoryList.ElementAt(1).Book;
@@ -93,6 +97,7 @@ namespace ppedv.BV.Data.EF.Tests
         }
 
         [Test]
+        [Category("NUnit")]
         public void EFContext_can_delete_Book()
         {
             var b1 = SetupClass.BookStores[0].InventoryList.ElementAt(2).Book;
