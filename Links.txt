@@ -3,3 +3,7 @@ Nützliche Links:
 .NET Standard
 https://devblogs.microsoft.com/dotnet/introducing-net-standard/
 https://docs.microsoft.com/de-de/dotnet/standard/net-standard
+
+Tools:
+Autofixture (Generieren von Testdaten)
+https://github.com/AutoFixture/AutoFixture/wiki/Cheat-Sheet
