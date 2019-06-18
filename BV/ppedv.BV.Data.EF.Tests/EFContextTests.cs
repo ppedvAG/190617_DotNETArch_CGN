@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoFixture;
+using FluentAssertions;
 using NUnit.Framework;
 using ppedv.BV.Domain;
 
@@ -33,11 +34,14 @@ namespace ppedv.BV.Data.EF.Tests
                 if (context.Database.Exists())
                     context.Database.Delete();
 
-                Assert.IsFalse(context.Database.Exists());
+                context.Database.Exists().Should().BeFalse();
+                //Assert.IsFalse(context.Database.Exists());
 
                 context.Database.Create();
 
-                Assert.IsTrue(context.Database.Exists());
+
+                context.Database.Exists().Should().BeTrue();
+                //Assert.IsTrue(context.Database.Exists());
             }
         }
 
@@ -57,10 +61,61 @@ namespace ppedv.BV.Data.EF.Tests
             using (var context = new EFContext(SetupClass.connectionString))
             {
                 var loadedBook = context.Book.Find(b1.ID);
-                Assert.AreEqual(loadedBook.ISBN, b1.ISBN);
+                // Assert.AreEqual(loadedBook.ISBN, b1.ISBN);
+                loadedBook.Should().BeEquivalentTo(b1); // Vergleicht jedes Property
             }
         }
 
+        [Test]
+        public void EFContext_can_update_Book()
+        {
+            var b1 = SetupClass.BookStores[0].InventoryList.ElementAt(1).Book;
+            string newTitle = SetupClass.Fixture.Create<string>();
+
+            using (var context = new EFContext(SetupClass.connectionString))
+            {
+                context.Book.Add(b1);
+                context.SaveChanges();
+            }
+
+            using (var context = new EFContext(SetupClass.connectionString))
+            {
+                var loadedBook = context.Book.Find(b1.ID);
+                loadedBook.Title = newTitle;
+                context.SaveChanges();
+            }
+
+            using (var context = new EFContext(SetupClass.connectionString))
+            {
+                var loadedBook = context.Book.Find(b1.ID);
+                loadedBook.Title.Should().Be(newTitle); 
+            }
+        }
+
+        [Test]
+        public void EFContext_can_delete_Book()
+        {
+            var b1 = SetupClass.BookStores[0].InventoryList.ElementAt(2).Book;
+
+            using (var context = new EFContext(SetupClass.connectionString))
+            {
+                context.Book.Add(b1);
+                context.SaveChanges();
+            }
+
+            using (var context = new EFContext(SetupClass.connectionString))
+            {
+                var loadedBook = context.Book.Find(b1.ID);
+                context.Book.Remove(loadedBook);
+                context.SaveChanges();
+            }
+
+            using (var context = new EFContext(SetupClass.connectionString))
+            {
+                var loadedBook = context.Book.Find(b1.ID);
+                loadedBook.Should().BeNull();
+            }
+        }
 
     }
 }

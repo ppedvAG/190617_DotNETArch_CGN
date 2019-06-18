@@ -13,15 +13,15 @@ namespace ppedv.BV.Data.EF.Tests
     public class SetupClass
     {
         public const string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=BV_Tests;Trusted_Connection=true;AttachDbFilename=C:\temp\BV_Test.mdf";
-        private Fixture fixture;
+        public static Fixture Fixture { get; private set; }
 
         public static List<BookStore> BookStores;
 
         [OneTimeSetUp]
         public void RunBeforeAllTests()
         {
-            fixture = new Fixture();
-            BookStores = fixture.CreateMany<BookStore>(10).ToList();
+            Fixture = new Fixture();
+            BookStores = Fixture.CreateMany<BookStore>(10).ToList();
             using (var context = new EFContext(connectionString))
             {
                 if (context.Database.Exists())
