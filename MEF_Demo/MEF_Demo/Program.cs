@@ -21,10 +21,17 @@ namespace MEF_Demo
             container.ComposeParts(paint); // Ladet alles in pain hinein
 
             // Variante 1: Klasse
-            //paint.Zeichnung.Zeichnen();
+            // paint.Zeichnung.Zeichnen();
 
             // Variante 2: Methode
-            paint.LogikVonWoanders.Invoke();
+            // paint.LogikVonWoanders.Invoke();
+
+            // Variante 3: Alles laden was eine IGrafik ist:
+
+            foreach (var grafik in paint.Zeichnungen)
+            {
+                grafik.Zeichnen();
+            }
 
             Console.WriteLine("---ENDE---");
             Console.ReadKey();
@@ -36,7 +43,7 @@ namespace MEF_Demo
         [Import("Zeichnen_Methode")]
         public Action LogikVonWoanders;
 
-        [Import(typeof(IGrafik))]
-        public IGrafik Zeichnung { get; set; }
+        [ImportMany(typeof(IGrafik))]
+        public IGrafik[] Zeichnungen { get; set; }
     }
 }
