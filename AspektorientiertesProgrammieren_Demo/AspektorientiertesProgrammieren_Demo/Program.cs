@@ -12,12 +12,14 @@ namespace AspektorientiertesProgrammieren_Demo
         {
             Console.WriteLine("---Programmstart (ohne logging)---");
 
-            IRepository<Person> personenRepo = new LoggingRepository<Person>(new UniversalRepository<Person>());
+            IRepository<Person> personenRepo = new AuthRepositoriy<Person>(
+                                                   new LoggingRepository<Person>(
+                                                       new UniversalRepository<Person>()), User.Admin);
             // Zusammensetzen mit anderen Patterns
             // FactoryMethod: RepoFactory.GetLoggingRepo<Person>();
             // Builder: GetUniversalRepo()
             //         .WithLogger()
-            //         .WithAuth()
+            //         .WithAuth(readonly)
             //         .Get();
 
             var person = new Person { Vorname = "Tom", Nachname = "Ate", Alter = 10, Kontostand = 100000000 };
