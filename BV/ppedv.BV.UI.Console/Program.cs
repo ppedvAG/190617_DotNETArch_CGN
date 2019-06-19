@@ -13,11 +13,11 @@ namespace ppedv.BV.UI.Console
         static void Main(string[] args)
         {
             string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=BV_Produktiv;Trusted_Connection=true;AttachDbFilename=C:\temp\BV.mdf";
-            var core = new Core(new EFRepository(new EFContext(connectionString)));
+            var core = new Core(new EFUnitOfWork(new EFContext(connectionString)));
 
             // core.CreateNewBookStore();
 
-            var store = core.GetBookStoreWithHighestInventoryValue();
+            var store = core.GetBookStoreWithHighestInventoryValue(); // Core-Logik
 
             System.Console.WriteLine(store.ID);
             System.Console.WriteLine(store.Address);

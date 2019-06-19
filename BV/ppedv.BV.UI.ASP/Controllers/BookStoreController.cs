@@ -15,22 +15,20 @@ namespace ppedv.BV.UI.ASP.Controllers
         private const string connectionString = @"Server=(localdb)\MSSQLLocalDB;Database=BV_Produktiv;Trusted_Connection=true;AttachDbFilename=C:\temp\BV.mdf";
         public BookStoreController()
         {
-            repository = new EFRepository(new EFContext(connectionString));
-            core = new Core(repository);
+            core = new Core(new EFUnitOfWork(new EFContext(connectionString)));
         }
         private readonly Core core;
-        private readonly IRepository repository;
 
         // GET: BookStore
         public ActionResult Index()
         {
-            return View(repository.GetAll<BookStore>());
+            return View(core.UnitOfWork.BookStoreRepository.GetAll());
         }
 
         // GET: BookStore/Details/5
         public ActionResult Details(int id)
         {
-            return View(repository.GetByID<BookStore>(id));
+            return View(core.UnitOfWork.BookStoreRepository.GetByID(id));
         }
 
         // GET: BookStore/Create
@@ -45,8 +43,8 @@ namespace ppedv.BV.UI.ASP.Controllers
         {
             try
             {
-                repository.Add(newBookStore);
-                repository.Save();
+                core.UnitOfWork.BookStoreRepository.Add(newBookStore);
+                core.UnitOfWork.Save();
 
                 return RedirectToAction("Index");
             }
@@ -59,7 +57,7 @@ namespace ppedv.BV.UI.ASP.Controllers
         // GET: BookStore/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(repository.GetByID<BookStore>(id));
+            return View(core.UnitOfWork.BookStoreRepository.GetByID(id));
         }
 
         // POST: BookStore/Edit/5
@@ -68,8 +66,8 @@ namespace ppedv.BV.UI.ASP.Controllers
         {
             try
             {
-                repository.Update(editedBookStore);
-                repository.Save();
+                core.UnitOfWork.BookStoreRepository.Update(editedBookStore);
+                core.UnitOfWork.Save();
 
                 return RedirectToAction("Index");
             }
@@ -82,7 +80,7 @@ namespace ppedv.BV.UI.ASP.Controllers
         // GET: BookStore/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(repository.GetByID<BookStore>(id));
+            return View(core.UnitOfWork.BookStoreRepository.GetByID(id));
         }
 
         // POST: BookStore/Delete/5
@@ -91,9 +89,9 @@ namespace ppedv.BV.UI.ASP.Controllers
         {
             try
             {
-                var bookToDelete = repository.GetByID<BookStore>(id);
-                repository.Delete(bookToDelete);
-                repository.Save();
+                var bookToDelete = core.UnitOfWork.BookStoreRepository.GetByID(id);
+                core.UnitOfWork.BookStoreRepository.Delete(bookToDelete);
+                core.UnitOfWork.Save();
 
                 return RedirectToAction("Index");
             }

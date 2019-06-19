@@ -21,13 +21,13 @@ namespace ppedv.BV.UI.WPF.ViewModels
         public MainViewModel()
         {
             // Kontrollfreak-Antipattern
-            core = new Core(new EFRepository(new EFContext(connectionString)));
+            core = new Core(new EFUnitOfWork(new EFContext(connectionString)));
             GetBookStoreWithHighestValue_Command = new RelayCommand(GetBookStore);
         }
 
         private void GetBookStore(object obj)
         {
-            BookStoreWithHighestValue = core.GetBookStoreWithHighestInventoryValue();
+            BookStoreWithHighestValue = core.GetBookStoreWithHighestInventoryValue(); // Core - Logik
         }
 
         private Core core;

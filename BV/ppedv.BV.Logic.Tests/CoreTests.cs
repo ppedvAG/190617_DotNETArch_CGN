@@ -22,13 +22,17 @@ namespace ppedv.BV.Logic.Tests
         [Trait("Unittest","")]
         public void Core_CreateNewBookStore_calls_RepositoryAdd_5_times_and_saves_changes()
         {
-            var mock = new Mock<IRepository>(); // Fakeimplementierung der Schnittstelle
+            var mock = new Mock<IUnitOfWork>(); // Fakeimplementierung der Schnittstelle
+            var repository = new Mock<IBookStoreRepository>(); // Fakeimplementierung der Schnittstelle
+            mock.Setup(x => x.BookStoreRepository)
+                .Returns(() => repository.Object);
+
             var core = new Core(mock.Object);
 
             core.CreateNewBookStore();
             // Irgendwie prüfen, dass vom Repository 5 mal "Add()" ausgeführt wurde und dass gespeichert wurde
 
-            mock.Verify(x => x.Add(It.IsAny<BookStore>()), Times.Exactly(5));
+            repository.Verify(x => x.Add(It.IsAny<BookStore>()), Times.Exactly(5));
             mock.Verify(x => x.Save(), Times.AtLeastOnce());
         }
 
@@ -36,12 +40,12 @@ namespace ppedv.BV.Logic.Tests
         [Trait("Integrationstest","")]
         public void Core_can_CreateNewBookStore()
         {
-            var repository = new EFRepository(new EFContext(connectionString));
-            var core = new Core(repository);
+            var unitOfWork = new EFUnitOfWork(new EFContext(connectionString));
+            var core = new Core(unitOfWork);
 
-            var oldCount = repository.Query<BookStore>().Count(); 
+            var oldCount = unitOfWork.BookStoreRepository.Query().Count(); 
             core.CreateNewBookStore();
-            var newCount = repository.Query<BookStore>().Count();
+            var newCount = unitOfWork.BookStoreRepository.Query().Count();
 
             newCount.Should().Be(oldCount + 5);
         }
@@ -56,8 +60,8 @@ namespace ppedv.BV.Logic.Tests
             mockData.ElementAt(2).InventoryList.ElementAt(0).Book.Price = 999999999999m;
             mockData.ElementAt(2).InventoryList.ElementAt(0).Amount = Int32.MaxValue;
 
-            var mock = new Mock<IRepository>(); // Fakeimplementierung der Schnittstelle
-            mock.Setup(x => x.Query<BookStore>())
+            var mock = new Mock<IUnitOfWork>(); // Fakeimplementierung der Schnittstelle
+            mock.Setup(x => x.BookStoreRepository.Query())
                 .Returns(() => mockData.AsQueryable());
 
             var core = new Core(mock.Object);
@@ -66,7 +70,7 @@ namespace ppedv.BV.Logic.Tests
             // Irgendwie prüfen, dass vom Repository 5 mal "Add()" ausgeführt wurde und dass gespeichert wurde
 
             result.Should().Be(mockData.ElementAt(2));
-            mock.Verify(x => x.Query<BookStore>(), Times.AtLeastOnce());
+            mock.Verify(x => x.BookStoreRepository.Query(), Times.AtLeastOnce());
         }
 
     }

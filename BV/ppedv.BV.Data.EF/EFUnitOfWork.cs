@@ -23,7 +23,7 @@ namespace ppedv.BV.Data.EF
         {
             get // Hausaufgabe: Locken und Threadsicher machen ;)
             {
-                if (bookStoreRepository != null)
+                if (bookStoreRepository == null)
                     bookStoreRepository = new EFBookStoreRepository(context);
 
                 return bookStoreRepository;
