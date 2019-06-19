@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,14 @@ namespace MEF_Demo
         static void Main(string[] args)
         {
 
+
             Console.WriteLine("---ENDE---");
             Console.ReadKey();
         }
+    }
+
+    class MSPaint
+    {
+        public IGrafik Zeichnung { get; set; }
     }
 }
