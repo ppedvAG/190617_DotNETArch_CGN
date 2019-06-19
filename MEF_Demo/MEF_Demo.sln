@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29001.49
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MEF_Demo", "MEF_Demo\MEF_Demo.csproj", "{CF450A55-8EE9-40CE-A1B2-2A43E523EF9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF450A55-8EE9-40CE-A1B2-2A43E523EF9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF450A55-8EE9-40CE-A1B2-2A43E523EF9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF450A55-8EE9-40CE-A1B2-2A43E523EF9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF450A55-8EE9-40CE-A1B2-2A43E523EF9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCEFA1BB-192A-4580-8DC8-894F5309EA06}
+	EndGlobalSection
+EndGlobal
