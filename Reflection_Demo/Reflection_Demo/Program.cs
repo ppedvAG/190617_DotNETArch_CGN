@@ -11,28 +11,45 @@ namespace Reflection_Demo
     {
         static void Main(string[] args)
         {
-            object o1 = new object();
-            Type info = o1.GetType();
+            #region Einführung
+            //object o1 = new object();
+            //Type info = o1.GetType();
 
-            Console.WriteLine(info);
+            //Console.WriteLine(info);
 
-            int zahl = 42;
-            Console.WriteLine(zahl.GetType());
+            //int zahl = 42;
+            //Console.WriteLine(zahl.GetType());
 
-            Type zahlType = zahl.GetType();
+            //Type zahlType = zahl.GetType();
 
-            object neueInstanz = Activator.CreateInstance(zahlType);
+            //object neueInstanz = Activator.CreateInstance(zahlType);
 
-            Console.WriteLine(neueInstanz);
-            Console.WriteLine(neueInstanz.GetType());
+            //Console.WriteLine(neueInstanz);
+            //Console.WriteLine(neueInstanz.GetType());
 
-            Person generiert = MeinAutoFixture<Person>();
+            //Person generiert = MeinAutoFixture<Person>();
 
-            Console.WriteLine(generiert.Vorname);
-            Console.WriteLine(generiert.Nachname);
-            Console.WriteLine(generiert.Alter);
-            Console.WriteLine(generiert.Kontostand);
+            //Console.WriteLine(generiert.Vorname);
+            //Console.WriteLine(generiert.Nachname);
+            //Console.WriteLine(generiert.Alter);
+            //Console.WriteLine(generiert.Kontostand); 
+            #endregion
 
+            var tr_assembly = Assembly.LoadFrom("./TaschenrechnerLib.dll");
+
+            // 1) Name des Datentyps ist bekannt
+            var taschenrechnerTyp = tr_assembly.GetType("TaschenrechnerLib.Taschenrechner");
+            // 2) Mit GetTypes() alle Typen holen und dann durchsuchen
+
+            object taschenrechnerInstanz = Activator.CreateInstance(taschenrechnerTyp);
+            // Idealfall: Statt object eine Schnittstelle nutzen
+
+            // Mühsamer Weg ohne Schnittstelle:
+            var methodenInfo = taschenrechnerTyp.GetRuntimeMethod("Add", new Type[] { typeof(int), typeof(int) });
+
+            var ergebnis = methodenInfo.Invoke(taschenrechnerInstanz, new object[] { 2, 2 });
+
+            Console.WriteLine(ergebnis);
             Console.WriteLine("---ENDE---");
             Console.ReadKey();
         }

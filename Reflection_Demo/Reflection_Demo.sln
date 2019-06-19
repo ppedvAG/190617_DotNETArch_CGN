@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflection_Demo", "Reflection_Demo\Reflection_Demo.csproj", "{6616B53D-F989-4DD0-85C3-96ECE8555FFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaschenrechnerLib", "TaschenrechnerLib\TaschenrechnerLib.csproj", "{BF7B7DE1-FDB7-4589-AE6D-121880E7CBF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaschenrechnerLib_TrumpEdition", "TaschenrechnerLib_TrumpEdition\TaschenrechnerLib_TrumpEdition.csproj", "{986F761C-8A9A-4910-A900-B18732D44E41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{6616B53D-F989-4DD0-85C3-96ECE8555FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6616B53D-F989-4DD0-85C3-96ECE8555FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6616B53D-F989-4DD0-85C3-96ECE8555FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF7B7DE1-FDB7-4589-AE6D-121880E7CBF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF7B7DE1-FDB7-4589-AE6D-121880E7CBF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF7B7DE1-FDB7-4589-AE6D-121880E7CBF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF7B7DE1-FDB7-4589-AE6D-121880E7CBF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{986F761C-8A9A-4910-A900-B18732D44E41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{986F761C-8A9A-4910-A900-B18732D44E41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{986F761C-8A9A-4910-A900-B18732D44E41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{986F761C-8A9A-4910-A900-B18732D44E41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
