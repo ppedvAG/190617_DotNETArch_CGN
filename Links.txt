@@ -25,3 +25,6 @@ https://xunit.net/docs/comparisons
 
 .NET Decompiler: ILSpy
 https://github.com/icsharpcode/ILSpy
+
+.NET Framework Quellcode
+https://referencesource.microsoft.com/
