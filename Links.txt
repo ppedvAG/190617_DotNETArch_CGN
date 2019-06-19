@@ -22,3 +22,6 @@ https://xunit.net/docs/running-tests-in-msbuild
 
 XUnit - Vergleich der Schlüsselwörter/Attribute etc...
 https://xunit.net/docs/comparisons
+
+.NET Decompiler: ILSpy
+https://github.com/icsharpcode/ILSpy
